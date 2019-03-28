@@ -42,10 +42,10 @@ eth-wallet: context [
 
 	; tx: [
 	; 	nonce		[integer!]
-	; 	gas-price	[hex!]
+	; 	gas-price	[binary!]
 	; 	gas-limit	[integer!]
 	; 	to-address	[binary!]
-	; 	amount		[hex!]			;-- Wei
+	; 	amount		[binary!]			;-- Wei
 	; 	data		[binary!]
 	; ]
 	sign-transaction: func [
@@ -107,6 +107,6 @@ print #{49ee230b1605382ac1c40079191bca937fc30e8c2fa845b7de27a96ffcc4ddbf} = eth-
 print #{eef2c0702151930b84cffcaa642af58e692956314519114e78f3211a6465f28b} = eth-wallet/get-private 2
 
 eth-wallet/private-key: #{4646464646464646464646464646464646464646464646464646464646464646}
-data: reduce [9 to hex! #{04A817C800} 21000 #{3535353535353535353535353535353535353535} to hex! #{0DE0B6B3A7640000} #{}]
+data: reduce [9 #{04A817C800} 21000 #{3535353535353535353535353535353535353535} #{0DE0B6B3A7640000} #{}]
 print #{f86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83}
 = eth-wallet/sign-transaction none data 1

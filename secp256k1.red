@@ -305,7 +305,7 @@ secp256: context [
 		free data
 	]
 
-	prikey-valid?: routine [
+	privkey-valid?: routine [
 		private-key [binary!]
 		return:		[logic!]
 		/local

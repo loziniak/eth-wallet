@@ -18,7 +18,7 @@ bip32key: context [
 		/local I Il Ir
 	][
 		I: checksum/with bin 'SHA512 "Bitcoin seed"
-		if not secp256/prikey-valid? Il: copy/part I 32 [return none]
+		if not secp256/privkey-valid? Il: copy/part I 32 [return none]
 		Ir: copy/part skip I 32 32
 		reduce [Il Ir]
 	]
@@ -38,7 +38,7 @@ bip32key: context [
 			repend data [pub to binary! index]
 		]
 		I: checksum/with data 'SHA512 cpar
-		if not secp256/prikey-valid? Il: copy/part I 32 [return none]
+		if not secp256/privkey-valid? Il: copy/part I 32 [return none]
 		Ir: copy/part skip I 32 32
 		if none? child: secp256/privkey-tweak-add kpar Il [return none]
 		reduce [child Ir]
@@ -56,7 +56,7 @@ bip32key: context [
 		pub: secp256/serialize-pubkey kpar true
 		repend data [pub to binary! index]
 		I: checksum/with data 'SHA512 cpar
-		if not secp256/prikey-valid? Il: copy/part I 32 [return none]
+		if not secp256/privkey-valid? Il: copy/part I 32 [return none]
 		Ir: copy/part skip I 32 32
 		pub2: secp256/create-pubkey Il
 		child: secp256/pubkey-combine reduce [pub2 kpar]

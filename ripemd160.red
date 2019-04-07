@@ -24,7 +24,10 @@ context [
 				data: binary/rs-head as red-binary! ins
 				len: binary/rs-length? as red-binary! ins
 			]
-			TYPE_STRING [data: as byte-ptr! unicode/to-utf8 as red-string! ins :len]
+			TYPE_STRING [
+				len: string/rs-length? as red-string! ins
+				data: as byte-ptr! unicode/to-utf8 as red-string! ins :len
+			]
 			default [
 				fire [TO_ERROR(script invalid-arg) stack/arguments]
 			]

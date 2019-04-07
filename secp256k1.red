@@ -1,7 +1,7 @@
 Red [
-	Title:	"bip39"
+	Title:	"libsecp256k1 bindings"
 	Author: "bitbegin"
-	File: 	%bip39.red
+	File: 	%secp256k1.red
 	Tabs: 	4
 	License: "BSD-3 - https://github.com/red/red/blob/master/BSD-3-License.txt"
 ]

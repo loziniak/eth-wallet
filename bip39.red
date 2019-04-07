@@ -8,15 +8,16 @@ Red [
 
 #include %pbkdf2.red
 
-urandom: routine [
+urandom: function [
 	len			[integer!]
-	/local
-		data	[byte-ptr!]
-][
-	data: allocate len
-	crypto/urandom data len
-	stack/set-last as red-value! binary/load data len
-	free data
+	return:		[binary!]
+] [
+	data: make binary! len
+	loop len [
+		insert data
+			back tail to-binary (random/secure 256) - 1
+	]
+	data
 ]
 
 word-list: context [

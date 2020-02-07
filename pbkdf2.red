@@ -34,7 +34,7 @@ pbkdf2: context [
 		blk-size: alg-digest-size alg
 		output: make binary! key-len
 		i: 1
-		salt-tail: tail salt
+		salt-tail: tail copy salt
 		while [key-len > 0][
 			value: head change salt-tail to-string to-binary i
 			value: sum: checksum/with value alg password
